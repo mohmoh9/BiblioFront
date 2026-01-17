@@ -1,0 +1,124 @@
+/* shop.css */
+
+.shop-container {
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+/* Titre */
+.shop-container h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.shop-subtitle {
+  font-size: 1.2rem;
+  color: #475569;
+  margin-bottom: 3rem;
+}
+
+/* Grille de livres */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Carte livre */
+.book-card {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Image */
+.book-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Texte */
+.book-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.author {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0.25rem 0;
+}
+
+.price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 1rem;
+}
+
+/* Boutons */
+.book-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.book-actions button {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Acheter */
+.buy-btn {
+  background-color: #22c55e;
+  color: white;
+}
+
+.buy-btn:hover {
+  background-color: #16a34a;
+}
+
+/* Louer */
+.rent-btn {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.rent-btn:hover {
+  background-color: #2563eb;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .shop-container h1 {
+    font-size: 2rem;
+  }
+
+  .shop-subtitle {
+    font-size: 1rem;
+  }
+}

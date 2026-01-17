@@ -1,70 +1,181 @@
-# Getting Started with Create React App
+# 📚 Bibliothèque en ligne – Application Web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application web complète de **bibliothèque en ligne** permettant aux utilisateurs de :
+- consulter des livres
+- acheter ou louer des livres
+- rechercher des ouvrages
+- gérer un panier
+- créer un compte et se connecter
+- gérer leur profil utilisateur
 
-## Available Scripts
+Le projet est composé d’un **frontend React** et d’un **backend Spring Boot**.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Fonctionnalités
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 👤 Authentification
+- Inscription
+- Connexion / Déconnexion
+- Stockage du token JWT
+- Gestion de la session utilisateur
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 📖 Livres
+- Liste des livres
+- Boutique (achat)
+- Location de livres
+- Notation des livres ⭐
+- Recherche par mot-clé
 
-### `npm test`
+### 🛒 Panier
+- Ajout / suppression de livres
+- Accès rapide depuis la navbar
+- Compatible mobile
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 👤 Profil utilisateur
+- Affichage du nom et de l’email
+- Avatar utilisateur
+- Mode édition du profil
+- Déconnexion
 
-### `npm run build`
+### 🌐 Navigation
+- Navbar **Bootstrap Dark Mode**
+- Menu responsive (burger menu)
+- Pages :
+  - Accueil
+  - Boutique
+  - Location
+  - À propos
+  - Blog
+  - Contact
+  - Recherche
+  - Panier
+  - Profil
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🧱 Stack Technique
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Frontend
+- **React**
+- **React Router**
+- **Bootstrap 5**
+- JavaScript (ES6+)
+- CSS
 
-### `npm run eject`
+### Backend
+- **Spring Boot**
+- Spring Security
+- JWT (authentification)
+- REST API
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Base de données
+- MySQL / PostgreSQL (selon configuration)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📁 Structure du projet
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Frontend
 
-## Learn More
+src/
+├── auth/
+│ └── authService.js
+├── components/
+│ └── Navbar.jsx
+├── pages/
+│ ├── Home.jsx
+│ ├── Shop.jsx
+│ ├── Location.jsx
+│ ├── Profile.jsx
+│ └── Cart.jsx
+├── App.jsx
+└── main.jsx
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Backend
 
-### Code Splitting
+src/main/java/com/bibliotheque/
+├── controller/
+├── service/
+├── repository/
+├── model/
+└── security/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## ⚙️ Installation & Lancement
 
-### Making a Progressive Web App
+### 🔹 Backend (Spring Boot)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Cloner le projet
+```bash
+git clone https://github.com/ton-repo/bibliotheque.git
 
-### Advanced Configuration
+    Configurer la base de données (application.properties)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+spring.datasource.url=jdbc:mysql://localhost:3306/bibliotheque
+spring.datasource.username=root
+spring.datasource.password=******
 
-### Deployment
+    Lancer le backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+mvn spring-boot:run
 
-### `npm run build` fails to minify
+➡️ Backend disponible sur :
+http://localhost:8080
+🔹 Frontend (React)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    Aller dans le dossier frontend
+
+cd frontend
+
+    Installer les dépendances
+
+npm install
+
+    Lancer l’application
+
+npm run dev
+
+➡️ Frontend disponible sur :
+http://localhost:5173
+🔐 Authentification (JWT)
+
+    Token stocké dans localStorage
+
+    Utilisateur stocké sous la clé user
+
+    Protection des routes sensibles (profil, panier)
+
+📱 Responsive Design
+
+    Navbar responsive (Bootstrap)
+
+    Menu burger mobile
+
+    Interface adaptée mobile / tablette / desktop
+
+🧪 Améliorations futures
+
+    Paiement en ligne 💳
+
+    Historique des commandes
+
+    Avis et commentaires utilisateurs
+
+    Dashboard administrateur
+
+    Upload d’avatar utilisateur
+
+    Mode sombre global 🌙
+
+👨‍💻 Auteur
+
+Moh Tamboura
+Projet académique / personnel
+Développé avec ❤️ en React & Spring Boot
+📄 Licence
+
+Ce projet est libre d’utilisation à des fins pédagogiques.

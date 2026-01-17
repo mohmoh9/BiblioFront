@@ -9,7 +9,7 @@ export default function Home() {
         Achetez ou louez vos livres préférés en ligne
       </p>
 
-      <Link to="/shop" className="shop-btn">
+      <Link to="/boutique" className="shop-btn">
         🛒 Aller à la boutique
       </Link>
 
