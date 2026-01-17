@@ -1,0 +1,105 @@
+/* home.css */
+
+/* Conteneur principal */
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+/* Titre */
+.home-container h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+/* Description */
+.home-lead {
+  font-size: 1.25rem;
+  color: #475569;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+/* Bouton vers la boutique */
+.shop-btn {
+  display: inline-block;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-bottom: 2rem;
+}
+
+.shop-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Image */
+.home-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.home-img:hover {
+  transform: scale(1.02);
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablettes */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 3rem 1rem;
+  }
+
+  .home-container h1 {
+    font-size: 2rem;
+  }
+
+  .home-lead {
+    font-size: 1.1rem;
+    max-width: 90%;
+  }
+
+  .shop-btn {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 480px) {
+  .home-container {
+    padding: 2rem 0.5rem;
+  }
+
+  .home-container h1 {
+    font-size: 1.75rem;
+  }
+
+  .home-lead {
+    font-size: 1rem;
+    max-width: 95%;
+  }
+
+  .shop-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}

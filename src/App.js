@@ -1,24 +1,71 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+
+// Pages
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Boutique from "./pages/Boutique";
+import Location from "./pages/Location";
+import About from "./pages/About";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
+import Panier from "./pages/Panier";
+import Profile from "./pages/Profile";
+
+// Layouts
+import DashboardLayout from "./layouts/DashboardLayout";
+
+// Auth
+import PrivateRoute from "./auth/PrivateRoute";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Router>
+      <Navbar />
+
+      <Routes>
+        {/* 🌍 PUBLIC */}
+        <Route path="/" element={<Home />} />
+        <Route path="/boutique" element={<Boutique />} />
+        <Route path="/location" element={<Location />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/panier" element={<Panier />} />
+<Route path="/login" element={<Login />} />
+<Route path="/register" element={<Register />} />
+
+<Route
+  path="/profile"
+  element={
+    <PrivateRoute>
+      <Profile />
+    </PrivateRoute>
+  }
+/>
+
+
+
+        {/* 🔐 DASHBOARD */}
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <DashboardLayout />
+            </PrivateRoute>
+          }
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Route index element={<Home />} />
+        </Route>
+
+        {/* ❌ */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+
+      <Footer />
+    </Router>
   );
 }
 
