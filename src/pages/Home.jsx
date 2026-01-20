@@ -20,6 +20,10 @@ export default function Home() {
         🛒 Aller à la boutique
       </Link>
 
+            <Link to="/addbookform" className="shop-btn">
+        Ajouter un livre
+      </Link>
+
       <img
         src="https://via.placeholder.com/800x300"
         className="home-img"

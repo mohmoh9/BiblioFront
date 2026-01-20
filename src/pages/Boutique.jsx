@@ -1,17 +1,43 @@
 import { useEffect, useState } from "react";
-import { bookApi } from "../api/axios";
+import { bookApi, cartApi } from "../api/axios";
 
 export default function Shop() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // ✅ ACHAT
+  const addBuy = async (id) => {
+    try {
+      await cartApi.post(`/add/${id}`, null, {
+        params: { type: "BUY" }
+      });
+      alert("Livre ajouté au panier (achat)");
+    } catch (err) {
+      console.error(err);
+      alert("Erreur lors de l'achat");
+    }
+  };
+
+  // ✅ LOCATION
+  const addRent = async (id) => {
+    try {
+      await cartApi.post(`/add/${id}`, null, {
+        params: { type: "RENT", days: 7 }
+      });
+      alert("Livre ajouté au panier (location)");
+    } catch (err) {
+      console.error(err);
+      alert("Erreur lors de la location");
+    }
+  };
+
   useEffect(() => {
-    bookApi.get("") // baseURL = /api/books
-      .then(res => {
-        console.log("Books API:", res.data);
-        setBooks(Array.isArray(res.data) ? res.data : res.data.content || []);
+    bookApi
+      .get("")
+      .then((res) => {
+        setBooks(Array.isArray(res.data) ? res.data : []);
       })
-      .catch(err => console.error("Erreur books:", err))
+      .catch((err) => console.error("Erreur books:", err))
       .finally(() => setLoading(false));
   }, []);
 
@@ -22,11 +48,22 @@ export default function Shop() {
       <h1>🛒 Boutique</h1>
 
       <div className="book-grid">
-        {books.map(book => (
-          <div className="book-card" key={book.id}>
+        {books.map((book) => (
+          <div key={book.id} className="book-card">
             <h3>{book.title}</h3>
             <p>{book.author}</p>
-            <p>{book.sellPrice} €</p>
+
+            {book.sellable && (
+              <button onClick={() => addBuy(book.id)}>
+                Acheter ({book.sellPrice} €)
+              </button>
+            )}
+
+            {book.rentable && (
+              <button onClick={() => addRent(book.id)}>
+                Louer ({book.rentPrice} €)
+              </button>
+            )}
           </div>
         ))}
       </div>

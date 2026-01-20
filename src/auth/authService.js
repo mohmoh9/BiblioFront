@@ -1,7 +1,7 @@
-import api from "../api/axios";
+import { authApi } from "../api/axios";
 
 export const login = async (email, password) => {
-  const response = await api.post("/login", {
+  const response = await authApi.post("/login", {
     email,
     password,
   });
@@ -15,8 +15,9 @@ export const login = async (email, password) => {
 };
 
 export const signup = async (user) => {
-  return api.post("/register", user);
+  return authApi.post("/register", user);
 };
+
 
 export const logout = () => {
   localStorage.removeItem("token");

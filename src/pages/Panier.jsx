@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { cartApi } from "../api/axios"; // ✅ utiliser la bonne instance
+import { cartApi } from "../api/axios";
 
 export default function Panier() {
   const [cart, setCart] = useState({ items: [] });
@@ -7,7 +7,6 @@ export default function Panier() {
   const [error, setError] = useState("");
 
   const fetchCart = async () => {
-    setLoading(true);
     try {
       const response = await cartApi.get("");
       setCart(response.data);
@@ -20,6 +19,42 @@ export default function Panier() {
     }
   };
 
+  // ➕ AJOUT ACHAT
+  const handleAddBuy = async (bookId) => {
+    try {
+      const response = await cartApi.post(
+        `/add/${bookId}`,
+        null,
+        { params: { type: "BUY" } }
+      );
+      setCart(response.data);
+    } catch (err) {
+      console.error(err);
+      setError("Impossible d'ajouter le livre (achat)");
+    }
+  };
+
+  // ➕ AJOUT LOCATION
+  const handleAddRent = async (bookId, days = 7) => {
+    try {
+      const response = await cartApi.post(
+        `/add/${bookId}`,
+        null,
+        {
+          params: {
+            type: "RENT",
+            days: days
+          }
+        }
+      );
+      setCart(response.data);
+    } catch (err) {
+      console.error(err);
+      setError("Impossible d'ajouter le livre (location)");
+    }
+  };
+
+  // ➖ SUPPRESSION
   const handleRemove = async (bookId) => {
     try {
       const response = await cartApi.delete(`/remove/${bookId}`);
@@ -27,22 +62,6 @@ export default function Panier() {
     } catch (err) {
       console.error(err);
       setError("Impossible de supprimer le livre");
-    }
-  };
-  const handleAdd = async (bookId) => {
-    try {
-      const response = await cartApi.post(`/add/${bookId}`, null, {
-  params: { type: "BUY" }
-}, {
-  params: {
-    type: "RENT",
-    days: 7
-  }
-  }) ;
-      setCart(response.data);
-    } catch (err) {
-      console.error(err);
-      setError("Impossible d'ajouter le livre");
     }
   };
 
@@ -61,29 +80,53 @@ export default function Panier() {
         <p>Votre panier est vide.</p>
       ) : (
         <ul className="space-y-4">
-          {cart.items.map((item) => (
-            <li key={item.id} className="border p-4 rounded-md flex justify-between items-center">
-              <div>
-                <h2 className="font-semibold">{item.book.title}</h2>
-                <p>Auteur : {item.book.author}</p>
-                <p>Quantité : {item.quantity}</p>
-                <p>Prix : {item.book.price} €</p>
-              </div>
-              <div className="flex space-x-2">
-                <button className="bg-green-500 text-white px-3 py-1 rounded" onClick={() => handleAdd(item.book.id)}>+</button>
-                <button className="bg-red-500 text-white px-3 py-1 rounded" onClick={() => handleRemove(item.book.id)}>-</button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
+          {cart.items.map((item) => {
+  const price =
+    item.type === "BUY"
+      ? item.book.sellPrice
+      : item.book.rentPrice * item.rentDays;
 
-      {cart.items.length > 0 && (
-        <div className="mt-4">
-          <p className="font-semibold">
-            Total : {cart.items.reduce((sum, item) => sum + item.book.price * item.quantity, 0)} €
-          </p>
-        </div>
+  return (
+    <li
+      key={`${item.book.id}-${item.type}`}
+      className="border p-4 rounded-md flex justify-between items-center"
+    >
+      <div>
+        <h2 className="font-semibold">{item.book.title}</h2>
+        <p>Auteur : {item.book.author}</p>
+        <p>Quantité : {item.quantity}</p>
+        <p>Type : {item.type}</p>
+        {item.type === "RENT" && <p>Durée : {item.rentDays} jours</p>}
+        <p className="font-semibold">Prix : {price} €</p>
+      </div>
+
+      <div className="flex gap-2">
+        <button
+          className="bg-green-500 text-white px-3 py-1 rounded"
+          onClick={() => handleAddBuy(item.book.id)}
+        >
+          + Acheter
+        </button>
+
+        <button
+          className="bg-blue-500 text-white px-3 py-1 rounded"
+          onClick={() => handleAddRent(item.book.id, 7)}
+        >
+          + Louer
+        </button>
+
+        <button
+          className="bg-red-500 text-white px-3 py-1 rounded"
+          onClick={() => handleRemove(item.book.id)}
+        >
+          -
+        </button>
+      </div>
+    </li>
+  );
+})}
+
+        </ul>
       )}
     </div>
   );

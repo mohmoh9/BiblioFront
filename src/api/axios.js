@@ -1,19 +1,28 @@
 import axios from "axios";
 
-
-// Axios pour l'auth
+/* ===========================
+   AUTH API
+=========================== */
 export const authApi = axios.create({
   baseURL: "http://localhost:8080/api/auth",
-  headers: { "Content-Type": "application/json" },
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-// Axios pour le panier
+/* ===========================
+   CART API
+=========================== */
 export const cartApi = axios.create({
   baseURL: "http://localhost:8080/api/panier",
-  headers: { "Content-Type": "application/json" },
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-// instance livres
+/* ===========================
+   BOOK API
+=========================== */
 export const bookApi = axios.create({
   baseURL: "http://localhost:8080/api/books",
   headers: {
@@ -21,21 +30,18 @@ export const bookApi = axios.create({
   },
 });
 
-// Interceptors pour ajouter le token
-[authApi, cartApi].forEach((instance) => {
-  instance.interceptors.request.use(
+/* ===========================
+   JWT INTERCEPTOR
+=========================== */
+[authApi, cartApi, bookApi].forEach((api) => {
+  api.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("token");
-      if (token) config.headers["Authorization"] = `Bearer ${token}`;
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
       return config;
     },
     (error) => Promise.reject(error)
   );
 });
-
-const api = {
-  authApi,
-  cartApi,
-};
-
-export default api;

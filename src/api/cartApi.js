@@ -1,4 +1,5 @@
 import axios from "axios";
+import { cartApi } from "../api/axios";
 
 const API_URL = "http://localhost:8080/api/panier"; // URL de ton backend
 
@@ -9,14 +10,15 @@ const getAuthHeader = () => {
 };
 
 // Récupérer le panier
-export const getCart = () => {
-  return axios.get(API_URL, { headers: getAuthHeader() });
-};
+export const getCart = () => cartApi.get("");
 
 // Ajouter un livre
-export const addToCart = (bookId) => {
-  return axios.post(`${API_URL}/add/${bookId}`, null, { headers: getAuthHeader() });
-};
+
+export const addToCart = (bookId, type) =>
+  cartApi.post(`/add?bookId=${bookId}&type=${type}`);
+
+export const checkout = () => cartApi.post("/checkout");
+
 
 // Supprimer un livre
 export const removeFromCart = (bookId) => {

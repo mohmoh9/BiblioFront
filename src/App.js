@@ -11,12 +11,15 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Panier from "./pages/Panier";
 import Profile from "./pages/Profile";
+import AddBookForm from "./admin/AddBookForm";
 
 // Layouts
 import DashboardLayout from "./layouts/DashboardLayout";
+import AdminDashboard from "./admin/AdminDashboard";
 
 // Auth
 import PrivateRoute from "./auth/PrivateRoute";
+import AdminRoute from "./auth/AdminRoute";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -36,6 +39,7 @@ function App() {
         <Route path="/panier" element={<Panier />} />
 <Route path="/login" element={<Login />} />
 <Route path="/register" element={<Register />} />
+<Route path="/addbookform" element={<AddBookForm />} />
 
 <Route
   path="/profile"
@@ -46,6 +50,14 @@ function App() {
   }
 />
 
+<Route
+  path="/admin"
+  element={
+    <AdminRoute>
+      <AdminDashboard />
+    </AdminRoute>
+  }
+/>
 
 
         {/* 🔐 DASHBOARD */}

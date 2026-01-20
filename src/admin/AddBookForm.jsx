@@ -2,16 +2,18 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function AddBook() {
-  const [book, setBook] = useState({
-    title: "",
-    author: "",
-    description: "",
-    rentable: false,
-    sellable: false,
-    rentPrice: 0,
-    sellPrice: 0,
-    quantity: 1,
-  });
+const [book, setBook] = useState({
+  title: "",
+  author: "",
+  isbn: "",
+  description: "",
+  rentable: false,
+  sellable: false,
+  rentPrice: 0,
+  sellPrice: 0,
+  quantity: 1,
+});
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -40,12 +42,6 @@ export default function AddBook() {
         <input className="form-control mb-2" name="author" placeholder="Auteur" onChange={handleChange} />
         <textarea className="form-control mb-2" name="description" placeholder="Description" onChange={handleChange} />
          <input className="form-control mb-2" name="isbn" placeholder="Isbn" onChange={handleChange} />
-         <input className="form-control mb-2" name="price" placeholder="Prix" onChange={handleChange} />
-
-        <div className="form-check">
-          <input type="checkbox" className="form-check-input" name="available" onChange={handleChange} />
-          <label className="form-check-label">disponible</label>
-        </div>
 
         <div className="form-check">
           <input type="checkbox" className="form-check-input" name="rentable" onChange={handleChange} />
