@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { isAuthenticated, logout, getCurrentUser } from "../auth/authService";
+import { isAuthenticated, logout, getCurrentUser } from "../auth/AuthService";
 import { useState } from "react";
 
 export default function Navbar() {

@@ -122,3 +122,16 @@
     font-size: 1rem;
   }
 }
+.rating {
+  margin-bottom: 0.75rem;
+}
+
+.star {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+  cursor: pointer;
+}
+
+.star.active {
+  color: #facc15;
+}

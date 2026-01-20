@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
+import { getCurrentUser } from "../auth/AuthService";
 import "./Home.css";
 
 export default function Home() {
+  const user = getCurrentUser();
+
   return (
     <div className="home-container">
-      <h1>📚 Bienvenue dans notre Bibliothèque</h1>
+      <h1>
+        📚 Bienvenue{" "}
+        {user ? <span className="user-name">{user.name}</span> : "dans notre Bibliothèque"}
+      </h1>
+
       <p className="home-lead">
         Achetez ou louez vos livres préférés en ligne
       </p>

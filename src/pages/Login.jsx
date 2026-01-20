@@ -1,27 +1,25 @@
 import { useState, useEffect } from "react";
-import { login, isAuthenticated } from "../auth/authService";
+import { login, isAuthenticated } from "../auth/AuthService";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import "./Login.css";
 
-
 export default function Login() {
+  const { setUser } = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [touched, setTouched] = useState({
-    email: false,
-    password: false,
-  });
+  const [touched, setTouched] = useState({ email: false, password: false });
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated()) navigate("/");
-  }, []);
+  }, [navigate]);
 
-  const isEmailValid = (email) => {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-};
+  const isEmailValid = (email) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const isPasswordValid = password.length >= 4;
 
@@ -34,7 +32,8 @@ export default function Login() {
     }
 
     try {
-      await login(email, password);
+      const user = await login(email, password);
+      setUser(user); // 🔥 IMPORTANT
       navigate("/");
     } catch {
       setError("Identifiants invalides");
@@ -49,30 +48,18 @@ export default function Login() {
       >
         <h2 className="text-xl font-semibold text-center">Connexion</h2>
 
-        {error && (
-          <p className="text-red-500 text-sm text-center">{error}</p>
-        )}
+        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
-        {/* Username */}
+        {/* Email */}
         <div>
           <input
             className={`login-input w-full border rounded-md px-3 py-2 text-sm outline-none
-              ${
-                touched.email
-                  ? isEmailValid
-                    ? "input-success"
-                    : "input-error"
-                  : ""
-              }
-            `}
+              ${touched.email ? (isEmailValid(email) ? "input-success" : "input-error") : ""}`}
             placeholder="Email"
             value={email}
-            onBlur={() =>
-              setTouched((t) => ({ ...t, email: true }))
-            }
+            onBlur={() => setTouched((t) => ({ ...t, email: true }))}
             onChange={(e) => setEmail(e.target.value)}
           />
-
           {touched.email && !isEmailValid(email) && (
             <p className="error-text">Email requis</p>
           )}
@@ -83,26 +70,14 @@ export default function Login() {
           <input
             type="password"
             className={`login-input w-full border rounded-md px-3 py-2 text-sm outline-none
-              ${
-                touched.password
-                  ? isPasswordValid
-                    ? "input-success"
-                    : "input-error"
-                  : ""
-              }
-            `}
+              ${touched.password ? (isPasswordValid ? "input-success" : "input-error") : ""}`}
             placeholder="Password"
             value={password}
-            onBlur={() =>
-              setTouched((t) => ({ ...t, password: true }))
-            }
+            onBlur={() => setTouched((t) => ({ ...t, password: true }))}
             onChange={(e) => setPassword(e.target.value)}
           />
-
           {touched.password && !isPasswordValid && (
-            <p className="error-text">
-              Mot de passe (min. 4 caractères)
-            </p>
+            <p className="error-text">Mot de passe (min. 4 caractères)</p>
           )}
         </div>
 
