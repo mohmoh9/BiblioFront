@@ -1,30 +1,47 @@
+import "./About.css";
+
 export default function About() {
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4">📖 À propos de nous</h2>
+    <div className="about-container">
+      {/* Hero */}
+      <section className="about-hero">
+        <h1>📖 À propos de nous</h1>
+        <p>
+          Une bibliothèque en ligne moderne dédiée à la vente et à la location
+          de livres pour tous les passionnés de lecture.
+        </p>
+      </section>
 
-      <p className="lead">
-        Notre bibliothèque en ligne a pour objectif de faciliter l’accès
-        aux livres à travers la vente et la location.
-      </p>
-
-      <div className="row mt-4">
-        <div className="col-md-6">
-          <h5>🎯 Notre mission</h5>
+      {/* Content */}
+      <section className="about-content">
+        <div className="about-card">
+          <h3>🎯 Notre mission</h3>
           <p>
-            Rendre la lecture accessible à tous en proposant des livres
-            à prix abordables, disponibles à l’achat ou à la location.
+            Rendre la lecture accessible à tous en proposant des livres de
+            qualité à des prix abordables, disponibles à l’achat ou à la
+            location, partout et à tout moment.
           </p>
         </div>
 
-        <div className="col-md-6">
-          <h5>🚀 Notre vision</h5>
+        <div className="about-card">
+          <h3>🚀 Notre vision</h3>
           <p>
-            Devenir une plateforme de référence pour les passionnés de lecture,
-            étudiants et professionnels.
+            Devenir la plateforme de référence pour les étudiants,
+            professionnels et passionnés de lecture en Afrique et à
+            l’international.
           </p>
         </div>
-      </div>
+
+        <div className="about-card">
+          <h3>💡 Nos valeurs</h3>
+          <ul>
+            <li>📚 Passion pour la lecture</li>
+            <li>🤝 Accessibilité et partage</li>
+            <li>⚡ Innovation numérique</li>
+            <li>🌍 Culture et savoir</li>
+          </ul>
+        </div>
+      </section>
     </div>
   );
 }

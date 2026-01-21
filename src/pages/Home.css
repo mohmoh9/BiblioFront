@@ -1,105 +1,153 @@
-/* home.css */
-
-/* Conteneur principal */
-.home-container {
-  min-height: 100vh;
+/* =========================
+   HERO SECTION
+========================= */
+.home-hero {
+  position: relative;
+  min-height: calc(100vh - 80px);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 4rem 1rem;
-  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-  font-family: 'Inter', sans-serif;
-  text-align: center;
+  justify-content: space-between;
+  padding: 4rem 8%;
+  background: linear-gradient(
+    135deg,
+    #020617,
+    #020617cc
+  );
+  color: #fff;
+  overflow: hidden;
 }
 
-/* Titre */
-.home-container h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #1e293b;
+/* Overlay doux */
+.home-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(99, 102, 241, 0.25),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* =========================
+   CONTENU
+========================= */
+.home-content {
+  max-width: 550px;
+  z-index: 2;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.home-title {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.2;
   margin-bottom: 1rem;
 }
 
-/* Description */
+.user-name {
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .home-lead {
-  font-size: 1.25rem;
-  color: #475569;
+  font-size: 1.1rem;
+  color: #cbd5f5;
   margin-bottom: 2rem;
-  max-width: 600px;
 }
 
-/* Bouton vers la boutique */
-.shop-btn {
-  display: inline-block;
-  background-color: #3b82f6;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 1rem;
-  font-size: 1rem;
-  font-weight: 500;
+/* =========================
+   ACTIONS
+========================= */
+.home-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
   text-decoration: none;
-  transition: all 0.2s ease;
-  margin-bottom: 2rem;
+  transition: all 0.3s ease;
 }
 
-.shop-btn:hover {
-  background-color: #2563eb;
-  transform: translateY(-2px);
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
 }
 
-/* Image */
-.home-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 1rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(99, 102, 241, 0.5);
 }
 
-.home-img:hover {
-  transform: scale(1.02);
+.btn-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
 }
 
-/* ===== RESPONSIVE ===== */
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
 
-/* Tablettes */
-@media (max-width: 768px) {
-  .home-container {
-    padding: 3rem 1rem;
+/* =========================
+   IMAGE
+========================= */
+.home-image {
+  width: 45%;
+  max-width: 500px;
+  border-radius: 20px;
+  object-fit: cover;
+  z-index: 1;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  animation: float 6s ease-in-out infinite;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-
-  .home-container h1 {
-    font-size: 2rem;
-  }
-
-  .home-lead {
-    font-size: 1.1rem;
-    max-width: 90%;
-  }
-
-  .shop-btn {
-    padding: 0.65rem 1.25rem;
-    font-size: 0.95rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Mobiles */
-@media (max-width: 480px) {
-  .home-container {
-    padding: 2rem 0.5rem;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 992px) {
+  .home-hero {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .home-container h1 {
-    font-size: 1.75rem;
+  .home-image {
+    width: 90%;
+    margin-top: 2.5rem;
   }
 
-  .home-lead {
-    font-size: 1rem;
-    max-width: 95%;
-  }
-
-  .shop-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+  .home-actions {
+    justify-content: center;
   }
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { cartApi } from "../api/axios";
+import "./Panier.css"
 
 export default function Panier() {
   const [cart, setCart] = useState({ items: [] });
@@ -73,13 +74,13 @@ export default function Panier() {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Mon Panier</h1>
+    <div className="panier-container">
+      <h1 className="panier-title">Mon Panier</h1>
 
       {cart.items.length === 0 ? (
         <p>Votre panier est vide.</p>
       ) : (
-        <ul className="space-y-4">
+        <ul className="panier-list">
           {cart.items.map((item) => {
   const price =
     item.type === "BUY"
@@ -89,34 +90,41 @@ export default function Panier() {
   return (
     <li
       key={`${item.book.id}-${item.type}`}
-      className="border p-4 rounded-md flex justify-between items-center"
+      className="book-item"
     >
-      <div>
+      <div className="panier-info">
         <h2 className="font-semibold">{item.book.title}</h2>
+        <img
+  src={item.book.coverImage || "/images/no-cover.png"}
+  alt={item.book.title}
+  className="book-cover"
+/>
+<div className="panier-text">
         <p>Auteur : {item.book.author}</p>
         <p>Quantité : {item.quantity}</p>
         <p>Type : {item.type}</p>
         {item.type === "RENT" && <p>Durée : {item.rentDays} jours</p>}
-        <p className="font-semibold">Prix : {price} €</p>
+        <p className="panier-price">Prix : {price} €</p>
+        </div>
       </div>
 
-      <div className="flex gap-2">
+      <div className="panier-actions">
         <button
-          className="bg-green-500 text-white px-3 py-1 rounded"
+          className="btn-buy"
           onClick={() => handleAddBuy(item.book.id)}
         >
           + Acheter
         </button>
 
         <button
-          className="bg-blue-500 text-white px-3 py-1 rounded"
+          className="btn-rent"
           onClick={() => handleAddRent(item.book.id, 7)}
         >
           + Louer
         </button>
 
         <button
-          className="bg-red-500 text-white px-3 py-1 rounded"
+          className="btn-remove"
           onClick={() => handleRemove(item.book.id)}
         >
           -

@@ -1,40 +1,45 @@
+import "./Blog.css";
+
 export default function Blog() {
   const posts = [
     {
       id: 1,
       title: "Pourquoi lire tous les jours ?",
       excerpt:
-        "La lecture quotidienne améliore la concentration et la créativité..."
+        "La lecture quotidienne améliore la concentration, la créativité et réduit le stress.",
+      image: "https://source.unsplash.com/400x300/?reading,book"
     },
     {
       id: 2,
       title: "Top 5 des livres de programmation",
       excerpt:
-        "Découvrez les meilleurs livres pour devenir développeur..."
+        "Découvrez les meilleurs livres pour devenir développeur web et logiciel.",
+      image: "https://source.unsplash.com/400x300/?programming,code"
     },
     {
       id: 3,
       title: "Acheter ou louer un livre ?",
       excerpt:
-        "Chaque option a ses avantages selon votre besoin..."
+        "Chaque option a ses avantages selon votre budget et vos habitudes.",
+      image: "https://source.unsplash.com/400x300/?library,books"
     }
   ];
 
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4">📰 Blog</h2>
+    <div className="blog-container">
+      <h1 className="blog-title">📰 Notre Blog</h1>
+      <p className="blog-subtitle">
+        Conseils, lectures et actualités autour des livres
+      </p>
 
-      <div className="row">
+      <div className="blog-grid">
         {posts.map((post) => (
-          <div key={post.id} className="col-md-4 mb-4">
-            <div className="card h-100">
-              <div className="card-body">
-                <h5 className="card-title">{post.title}</h5>
-                <p className="card-text">{post.excerpt}</p>
-                <button className="btn btn-outline-primary">
-                  Lire la suite
-                </button>
-              </div>
+          <div key={post.id} className="blog-card">
+            <img src={post.image} alt={post.title} />
+            <div className="blog-card-content">
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+              <button>Lire la suite</button>
             </div>
           </div>
         ))}

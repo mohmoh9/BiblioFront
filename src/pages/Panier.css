@@ -1,33 +1,156 @@
-.cart-container {
-  min-height: 100vh;
-  padding: 3rem 1rem;
-  background: #f8fafc;
-  text-align: center;
+/* =========================
+   PANIER - GLOBAL
+========================= */
+
+.panier-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 24px;
 }
 
-.cart-item {
+.panier-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* =========================
+   LISTE PANIER
+========================= */
+
+.panier-list {
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* =========================
+   ITEM PANIER
+========================= */
+
+.panier-item {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  background: white;
-  padding: 1rem;
-  border-radius: 1rem;
-  max-width: 600px;
-  margin: 1rem auto;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  gap: 24px;
+  padding: 16px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.cart-item img {
-  width: 60px;
-  border-radius: 0.5rem;
+.panier-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
-.cart-item button {
-  margin-left: auto;
+/* =========================
+   INFOS LIVRE
+========================= */
+
+.panier-info {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.book-cover {
+  width: 90px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #f1f1f1;
+}
+
+.panier-text h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.panier-text p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 2px 0;
+}
+
+.panier-price {
+  margin-top: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.panier-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.panier-actions button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.panier-actions button:hover {
+  transform: scale(1.03);
+}
+
+/* Boutons */
+.btn-buy {
+  background: #22c55e;
+  color: white;
+}
+
+.btn-rent {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-remove {
   background: #ef4444;
   color: white;
-  border: none;
-  padding: 0.4rem 0.6rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
+}
+
+/* =========================
+   PANIER VIDE
+========================= */
+
+.panier-empty {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  padding: 40px 0;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .panier-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .panier-actions {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .book-cover {
+    width: 80px;
+    height: 120px;
+  }
 }

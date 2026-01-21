@@ -1,6 +1,9 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { isAuthenticated, logout, getCurrentUser } from "../auth/AuthService";
 import { useState } from "react";
+import "./Navbar.css"
+import { useEffect } from "react";
+
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -19,6 +22,22 @@ export default function Navbar() {
       setSearch("");
     }
   };
+
+
+
+useEffect(() => {
+  const handleScroll = () => {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 20) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -49,7 +68,7 @@ export default function Navbar() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item"><NavLink className="nav-link" to="/">Accueil</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link" to="/boutique">Boutique</NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link" to="/location">Location</NavLink></li>
+            {/*<li className="nav-item"><NavLink className="nav-link" to="/location">Location</NavLink></li>*/}
             <li className="nav-item"><NavLink className="nav-link" to="/about">À propos</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link" to="/blog">Blog</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link" to="/contact">Contact</NavLink></li>

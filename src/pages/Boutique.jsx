@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { bookApi, cartApi } from "../api/axios";
+import "./Boutique.css";
+
 
 export default function Shop() {
   const [books, setBooks] = useState([]);
@@ -50,6 +52,11 @@ export default function Shop() {
       <div className="book-grid">
         {books.map((book) => (
           <div key={book.id} className="book-card">
+              <img
+    src={book.coverImage || "/images/no-cover.png"}
+    alt={book.title}
+    className="book-cover"
+  />
             <h3>{book.title}</h3>
             <p>{book.author}</p>
 

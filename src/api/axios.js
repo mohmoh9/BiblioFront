@@ -30,6 +30,19 @@ export const bookApi = axios.create({
   },
 });
 
+export const adminBookApi = axios.create({
+  baseURL: "http://localhost:8080/api/admin/books",
+});
+
+/* ===========================
+   USER API
+=========================== */
+export const userApi = axios.create({
+  baseURL: "http://localhost:8080/api/users",
+  headers: { "Content-Type": "application/json" },
+});
+
+
 /* ===========================
    JWT INTERCEPTOR
 =========================== */
