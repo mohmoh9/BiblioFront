@@ -1,8 +1,6 @@
 /* === CONTAINER === */
 .shop-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem;
 }
 
 .shop-container h1 {
@@ -22,66 +20,99 @@
 /* === CARD === */
 .book-card {
   background: #ffffff;
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 1.2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .book-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* === IMAGE WRAPPER === */
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 0.8rem;
+}
+
+/* === IMAGE LIVRE === */
+.book-cover {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  background-color: #f3f4f6;
+  transition: transform 0.4s ease;
+}
+
+.book-card:hover .book-cover {
+  transform: scale(1.08);
+}
+
+/* === OVERLAY ACTIONS === */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.book-card:hover .overlay {
+  opacity: 1;
+}
+
+/* === BOUTONS OVERLAY === */
+.overlay button {
+  margin: 0 auto;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: white;
+  color: #111;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.overlay button:hover {
+  transform: scale(1.08);
+  background: #f1f5f9;
+}
+
+/* Achat */
+.overlay button:first-of-type {
+  color: #166534;
+}
+
+/* Location */
+.overlay button:last-of-type {
+  color: #1e40af;
 }
 
 /* === TITRE === */
 .book-card h3 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 /* === AUTEUR === */
 .book-card p {
   font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 1rem;
-}
-
-/* === BOUTONS === */
-.book-card button {
-  border: none;
-  padding: 0.6rem 0.8rem;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  transition: background 0.2s ease, transform 0.15s ease;
-}
-
-/* Achat */
-.book-card button:first-of-type {
-  background-color: #16a34a;
-  color: white;
-}
-
-.book-card button:first-of-type:hover {
-  background-color: #15803d;
-  transform: scale(1.03);
-}
-
-/* Location */
-.book-card button:last-of-type {
-  background-color: #2563eb;
-  color: white;
-}
-
-.book-card button:last-of-type:hover {
-  background-color: #1d4ed8;
-  transform: scale(1.03);
+  color: #6b7280;
+  margin-bottom: 0.6rem;
 }
 
 /* === RESPONSIVE === */
@@ -90,22 +121,32 @@
     font-size: 1.6rem;
   }
 
+  .book-cover {
+    height: 220px;
+  }
+
   .book-card {
     padding: 1rem;
   }
 }
-/* === IMAGE LIVRE === */
-.book-cover {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 0.8rem;
-  background-color: #f3f4f6;
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: center;
 }
 
-/* Effet zoom léger au hover */
-.book-card:hover .book-cover {
-  transform: scale(1.03);
-  transition: transform 0.3s ease;
+.filters input[type="text"],
+.filters input[type="number"] {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+}
+
+.filters label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
 }

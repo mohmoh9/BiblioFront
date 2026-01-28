@@ -1,12 +1,12 @@
 /* Page container */
-.container {
+.contact-container {
   max-width: 600px;
   margin: 60px auto;
   padding: 0 16px;
 }
 
 /* Card style */
-.container form {
+.contact-container form {
   background: #ffffff;
   padding: 32px;
   border-radius: 16px;
@@ -14,7 +14,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.container form:hover {
+.contact-container form:hover {
   transform: translateY(-3px);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
 }

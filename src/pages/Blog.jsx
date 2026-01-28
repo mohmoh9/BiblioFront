@@ -27,7 +27,7 @@ export default function Blog() {
 
   return (
     <div className="blog-container">
-      <h1 className="blog-title">📰 Notre Blog</h1>
+      <h1 className="blog-title"> Notre Blog</h1>
       <p className="blog-subtitle">
         Conseils, lectures et actualités autour des livres
       </p>

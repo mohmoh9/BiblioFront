@@ -12,6 +12,9 @@ import Contact from "./pages/Contact";
 import Panier from "./pages/Panier";
 import Profile from "./pages/Profile";
 import AddBookForm from "./admin/AddBookForm";
+import AdminBooks from "./admin/AdminBooks";
+import BookImageLoad from "./admin/BookImageLoad";
+import EditBook from "./admin/EditBook";
 
 // Layouts
 import DashboardLayout from "./layouts/DashboardLayout";
@@ -40,6 +43,11 @@ function App() {
 <Route path="/login" element={<Login />} />
 <Route path="/register" element={<Register />} />
 <Route path="/addbookform" element={<AddBookForm />} />
+<Route path="/adminbooks" element={<AdminBooks />} />
+<Route path="/bookimageload" element={<BookImageLoad />} />
+<Route path="/admin/books/edit/:id" element={<EditBook />} />
+
+
 
 <Route
   path="/profile"

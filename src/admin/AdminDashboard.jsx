@@ -1,37 +1,53 @@
-import { useEffect, useState } from "react";
-import { bookApi } from "../api/axios";
+import { Link } from "react-router-dom";
+import { getCurrentUser } from "../auth/AuthService";
 
 export default function AdminDashboard() {
-  const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    bookApi.get("").then(res => setBooks(res.data));
-  }, []);
+  const user = getCurrentUser();
+console.log("CURRENT USER:", user);
 
-  return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">📚 Admin Livres</h1>
+  return(
+<section className="home-hero">
+      <div className="home-overlay"></div>
 
-      <table className="w-full border">
-        <thead>
-          <tr>
-            <th>Titre</th>
-            <th>Stock</th>
-            <th>Vente</th>
-            <th>Location</th>
-          </tr>
-        </thead>
-        <tbody>
-          {books.map(b => (
-            <tr key={b.id}>
-              <td>{b.title}</td>
-              <td>{b.quantity}</td>
-              <td>{b.sellable ? "✔" : "❌"}</td>
-              <td>{b.rentable ? "✔" : "❌"}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+      <div className="home-content">
+        <h1 className="home-title">
+           Bienvenue{" "}
+          {user ? (
+            <span className="user-name">{user.name}</span>
+          ) : (
+            <span>dans notre Bibliothèque</span>
+          )}
+        </h1>
+
+        <p className="home-lead">
+        Vous êtes sur la page Admin,  
+        </p>
+
+        <div className="home-actions">
+
+
+                   {user?.role === "ADMIN" && (
+            <Link to="/addbookform" className="btn-secondary">
+               Ajouter un livre
+            </Link>
+          )}
+
+                    {user?.role === "ADMIN" && (
+            <Link to="/adminbooks" className="btn-secondary">
+               Liste des livres
+            </Link>
+          )}
+
+        </div>
+      </div>
+
+      {/* Image décorative */}
+      <img
+        src="https://images.unsplash.com/photo-1512820790803-83ca734da794"
+        alt="Bibliothèque"
+        className="home-image"
+      />
+    </section>    
+        );
 }

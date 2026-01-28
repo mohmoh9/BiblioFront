@@ -1,0 +1,119 @@
+/* =============================
+   EDIT BOOK – ADMIN
+============================= */
+
+.editbook-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.editbook-container h2 {
+  text-align: center;
+  margin-bottom: 1.8rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* INPUTS */
+.editbook-container input,
+.editbook-container textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.editbook-container textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.editbook-container input:focus,
+.editbook-container textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+}
+
+/* CHECKBOX */
+.editbook-container .form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.6rem 0;
+}
+
+.editbook-container .form-check-input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.editbook-container .form-check-label {
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+/* IMAGE PREVIEW */
+.editbook-preview {
+  text-align: center;
+  margin: 1rem 0 1.5rem;
+}
+
+.editbook-preview img {
+  width: 120px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+/* BUTTONS */
+.editbook-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.editbook-actions button {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.editbook-actions button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.editbook-save {
+  background: #4f46e5;
+  color: white;
+  border: none;
+}
+
+.editbook-save:hover {
+  background: #4338ca;
+}
+
+.editbook-cancel {
+  background: #e5e7eb;
+  color: #374151;
+  border: none;
+}
+
+.editbook-cancel:hover {
+  background: #d1d5db;
+}

@@ -21,7 +21,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="contact-container mt-5">
       <h2>Contactez-nous</h2>
 
       <form onSubmit={handleSubmit}>

@@ -11,7 +11,7 @@ export default function Home() {
 
       <div className="home-content">
         <h1 className="home-title">
-          📚 Bienvenue{" "}
+           Bienvenue{" "}
           {user ? (
             <span className="user-name">{user.name}</span>
           ) : (
@@ -24,15 +24,18 @@ export default function Home() {
         </p>
 
         <div className="home-actions">
+
           <Link to="/boutique" className="btn-primary">
-            🛒 Découvrir la boutique
+             Découvrir la boutique
           </Link>
 
-          {user?.role === "ADMIN" && (
-            <Link to="/addbookform" className="btn-secondary">
-              ➕ Ajouter un livre
+                    {user?.role === "ADMIN" && (
+            <Link to="/admin" className="btn-secondary">
+               Page Admin
             </Link>
           )}
+
+
         </div>
       </div>
 

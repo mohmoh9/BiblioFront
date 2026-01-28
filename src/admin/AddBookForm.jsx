@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import "../styles/AddBook.css";
+
 
 export default function AddBook() {
 const [book, setBook] = useState({
@@ -7,6 +9,7 @@ const [book, setBook] = useState({
   author: "",
   isbn: "",
   description: "",
+  coverImage: "",
   rentable: false,
   sellable: false,
   rentPrice: 0,
@@ -34,7 +37,8 @@ const [book, setBook] = useState({
   };
 
   return (
-    <div className="container mt-4">
+    <div className="add-book-page">
+    <div className="add-book-container mt-4">
       <h2>Ajouter un livre</h2>
 
       <form onSubmit={handleSubmit}>
@@ -42,6 +46,7 @@ const [book, setBook] = useState({
         <input className="form-control mb-2" name="author" placeholder="Auteur" onChange={handleChange} />
         <textarea className="form-control mb-2" name="description" placeholder="Description" onChange={handleChange} />
          <input className="form-control mb-2" name="isbn" placeholder="Isbn" onChange={handleChange} />
+        <input className="form-control mb-2" name="coverImage" placeholder="Image" onChange={handleChange} />
 
         <div className="form-check">
           <input type="checkbox" className="form-check-input" name="rentable" onChange={handleChange} />
@@ -83,6 +88,7 @@ const [book, setBook] = useState({
 
         <button className="btn btn-primary mt-3">Ajouter</button>
       </form>
+    </div>
     </div>
   );
 }

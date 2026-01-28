@@ -1,0 +1,75 @@
+.admin-books {
+  padding: 2rem;
+}
+
+.admin-books h1 {
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+
+.admin-books table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.admin-books thead {
+  background: #f3f4f6;
+}
+
+.admin-books th,
+.admin-books td {
+  padding: 12px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.admin-books tbody tr:hover {
+  background: #f9fafb;
+}
+
+.admin-books img {
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.admin-books .actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.admin-books button {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-edit {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #1e40af;
+}
+
+.btn-delete {
+  background: #dc2626;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #991b1b;
+}
+
+.loading {
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
