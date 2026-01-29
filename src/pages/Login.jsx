@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { login, isAuthenticated } from "../auth/AuthService";
+import { login, isAuthenticated } from "../auth/authService";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./Login.css";

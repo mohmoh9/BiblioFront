@@ -11,6 +11,8 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Panier from "./pages/Panier";
 import Profile from "./pages/Profile";
+import Faq from "./pages/Faq";
+import MentionsLegales from "./pages/MentionsLegales";
 import AddBookForm from "./admin/AddBookForm";
 import AdminBooks from "./admin/AdminBooks";
 import BookImageLoad from "./admin/BookImageLoad";
@@ -46,6 +48,9 @@ function App() {
 <Route path="/adminbooks" element={<AdminBooks />} />
 <Route path="/bookimageload" element={<BookImageLoad />} />
 <Route path="/admin/books/edit/:id" element={<EditBook />} />
+<Route path="/faq" element={<Faq />} />
+<Route path="/mentions-legales" element={<MentionsLegales />} />
+
 
 
 

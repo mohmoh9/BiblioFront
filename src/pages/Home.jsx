@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { getCurrentUser } from "../auth/AuthService";
+import { getCurrentUser } from "../auth/authService";
 import "./Home.css";
 
 export default function Home() {

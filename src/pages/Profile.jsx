@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getCurrentUser } from "../auth/AuthService";
+import { getCurrentUser } from "../auth/authService";
 import { userApi } from "../api/axios";
 import "./Profile.css";
 

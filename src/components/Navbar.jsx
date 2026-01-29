@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { isAuthenticated, logout, getCurrentUser } from "../auth/AuthService";
+import { isAuthenticated, logout, getCurrentUser } from "../auth/authService";
 import { useState } from "react";
 import "./Navbar.css"
 import { useEffect } from "react";

@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { getCurrentUser } from "../auth/AuthService";
+import { getCurrentUser } from "../auth/authService";
 
 export default function AdminRoute({ children }) {
   const user = getCurrentUser();
