@@ -172,13 +172,13 @@ useEffect(() => {
               <div className="overlay">
                 {book.sellable && (
                   <button onClick={() => addBuy(book.id)}>
-                    Acheter ({book.sellPrice} €)
+                    Acheter ({book.sellPrice} F CFA)
                   </button>
                 )}
 
                 {book.rentable && (
                   <button onClick={() => addRent(book.id)}>
-                    Louer ({book.rentPrice} €)
+                    Louer ({book.rentPrice} F CFA)
                   </button>
                 )}
               </div>

@@ -5,7 +5,7 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => getCurrentUser());
-  const [loading, setLoading] = useState(false);
+  const [loading, ] = useState(false);
 
   const logout = () => {
     logoutService();

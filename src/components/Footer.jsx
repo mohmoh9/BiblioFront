@@ -22,7 +22,7 @@ export default function Footer() {
 
             {/* Logo / Description */}
             <div className="col-md-4 mb-4">
-              <h5 className="fw-bold">📚 Bibliothèque</h5>
+              <h5 className="fw-bold"> Bibliothèque</h5>
               <p className="small">
                 Plateforme moderne de vente et de location de livres.
                 Découvrez, lisez et partagez le savoir.
