@@ -4,7 +4,11 @@ import { getCurrentUser } from "../auth/authService";
 export default function AdminRoute({ children }) {
   const user = getCurrentUser();
 
-  if (!user || user.role !== "ADMIN") {
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+
+  if (user.role !== "ADMIN") {
     return <Navigate to="/" />;
   }
 

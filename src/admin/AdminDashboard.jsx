@@ -1,53 +1,41 @@
 import { Link } from "react-router-dom";
 import { getCurrentUser } from "../auth/authService";
+import "../styles/AdminDahboard.css";
 
 export default function AdminDashboard() {
-
   const user = getCurrentUser();
-console.log("CURRENT USER:", user);
 
-  return(
-<section className="home-hero">
-      <div className="home-overlay"></div>
+  return (
+<section className="admin-dashboard">
+  <div className="admin-card">
+    <div className="admin-content">
+      <h1 className="admin-title">
+        Bienvenue <span>{user?.name || "Administrateur"}</span>
+      </h1>
 
-      <div className="home-content">
-        <h1 className="home-title">
-           Bienvenue{" "}
-          {user ? (
-            <span className="user-name">{user.name}</span>
-          ) : (
-            <span>dans notre Bibliothèque</span>
-          )}
-        </h1>
+      <p className="admin-text">
+        Vous êtes connecté à l’espace d’administration de la bibliothèque.
+      </p>
 
-        <p className="home-lead">
-        Vous êtes sur la page Admin,  
-        </p>
+      <div className="admin-actions">
+        <Link to="/addbookform" className="admin-btn-primary">
+           Ajouter un livre
+        </Link>
 
-        <div className="home-actions">
-
-
-                   {user?.role === "ADMIN" && (
-            <Link to="/addbookform" className="btn-secondary">
-               Ajouter un livre
-            </Link>
-          )}
-
-                    {user?.role === "ADMIN" && (
-            <Link to="/adminbooks" className="btn-secondary">
-               Liste des livres
-            </Link>
-          )}
-
-        </div>
+        <Link to="/adminbooks" className="admin-btn-secondary">
+           Gérer les livres
+        </Link>
       </div>
+    </div>
 
-      {/* Image décorative */}
+    <div className="admin-image">
       <img
         src="https://images.unsplash.com/photo-1512820790803-83ca734da794"
         alt="Bibliothèque"
-        className="home-image"
       />
-    </section>    
-        );
+    </div>
+  </div>
+</section>
+
+  );
 }

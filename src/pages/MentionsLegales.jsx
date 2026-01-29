@@ -10,7 +10,7 @@ export default function MentionsLegales() {
         <p>
           <strong>Nom :</strong> Bibliothèque en ligne<br />
           <strong>Responsable :</strong> Administrateur<br />
-          <strong>Email :</strong> contact@bibliotheque.com
+          <strong>Email :</strong> mohamedtamboura452@gmail.com
         </p>
       </div>
 

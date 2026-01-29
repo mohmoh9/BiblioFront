@@ -44,8 +44,6 @@ function App() {
         <Route path="/panier" element={<Panier />} />
 <Route path="/login" element={<Login />} />
 <Route path="/register" element={<Register />} />
-<Route path="/addbookform" element={<AddBookForm />} />
-<Route path="/adminbooks" element={<AdminBooks />} />
 <Route path="/bookimageload" element={<BookImageLoad />} />
 <Route path="/admin/books/edit/:id" element={<EditBook />} />
 <Route path="/faq" element={<Faq />} />
@@ -72,6 +70,23 @@ function App() {
   }
 />
 
+<Route
+  path="/addbookform"
+  element={
+    <AdminRoute>
+      <AddBookForm />
+    </AdminRoute>
+  }
+/>
+
+<Route
+  path="/adminbooks"
+  element={
+    <AdminRoute>
+      <AdminBooks />
+    </AdminRoute>
+  }
+/>
 
         {/* 🔐 DASHBOARD */}
         <Route
